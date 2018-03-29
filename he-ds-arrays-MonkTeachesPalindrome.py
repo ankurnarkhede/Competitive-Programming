@@ -1,12 +1,11 @@
 import sys
 
-n = int (sys.stdin.readline ())
+n = int (sys.stdin.readline ().strip())
 
 for i in range(0, n, +1):
-    str=sys.stdin.readline ()
-    reverse=''.join(reversed(str))
+    str=(sys.stdin.readline ().strip())
 
-    if(str==reverse):
+    if(str=="".join(list(reversed(str)))):
         if(len(str)%2==0):
             print('YES EVEN')
         else:

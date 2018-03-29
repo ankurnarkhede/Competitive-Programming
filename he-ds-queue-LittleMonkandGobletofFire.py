@@ -6,7 +6,7 @@ monk_queue = deque ([])
 x, y = 0, 0
 
 for i in range (0, q, +1):
-    print (i, '=========================\nq=', monk_queue)
+    # print (i, '=========================\nq=', monk_queue)
 
     ip = (sys.stdin.readline ().strip ().split (' '))
     if (len (ip) == 3):
@@ -26,4 +26,5 @@ for i in range (0, q, +1):
             monk_queue.append ([x, y])
 
     elif (char == 'D'):
-        print (*monk_queue.popleft ())
+        popped=monk_queue.popleft ()
+        print (*popped)

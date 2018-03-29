@@ -1,6 +1,13 @@
 import sys
 
+from collections import deque
+
 n = int (sys.stdin.readline ().strip ())
+
+d=deque([1,2,3,4,5])
+
+for i in range(0, n, +1):
+    str=(sys.stdin.readline ().strip())
 
 n = int (input ())
 n = int (sys.stdin.readline ())
