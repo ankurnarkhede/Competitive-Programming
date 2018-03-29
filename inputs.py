@@ -19,6 +19,8 @@ a = (list (map (int, sys.stdin.readline ().strip ().split (' '))))
 
 #    print ((str (ser[k])).zfill (5), end=' ')
 
+n, k = (map (int, sys.stdin.readline ().strip ().split (' ')))
+
 n, k = (map (int, input ().strip ().split (' ')))
 
 string, k = (map (str, input ().strip ().split (' ')))
