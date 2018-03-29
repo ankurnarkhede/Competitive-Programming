@@ -1,0 +1,38 @@
+
+
+
+n=int(input())
+date=0
+largest=0
+a = []
+for i in range (32):
+    a.append (0)
+
+for i in range(0,n,1):
+    w = input ()
+    # print ('w=', w)
+
+    # print ('w_split[0]=', w.split(' ')[0])
+    if(w.split(' ')[0]=='G:'):
+        for j in range(0,len(w.split(' ')),1):
+            # print('w_split[j]=',w.split(' ')[j])
+            if (w.split(' ')[j].isdigit()):
+                # print('digit found is=',w.split(' ')[j])
+                a[int(w.split(' ')[j])]+=2
+
+
+    if (w.split (' ')[0] == 'M:'):
+        for j in range(0,len(w.split(' ')),1):
+            # print('w_split[j]=',w.split(' ')[j])
+            if (w.split (' ')[j].isdigit ()):
+                # print ('digit found is=', w.split (' ')[j])
+                a[int (w.split (' ')[j])] += 1
+
+# print(a)
+
+date=a.index(max(a))
+if(date==19 or date==20):
+    print('Date')
+else:
+    print('No Date')
+
