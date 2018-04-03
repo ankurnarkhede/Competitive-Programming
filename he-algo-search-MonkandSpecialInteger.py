@@ -8,6 +8,7 @@ a = (list (map (int, sys.stdin.readline ().strip ().split (' '))))
 k=0
 
 for i in range(0,n,+1):
+    print(i)
     sub_array=[]
     sub_array_sum=[]
     for j in range (0, n-i, +1):
