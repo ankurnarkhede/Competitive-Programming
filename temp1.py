@@ -1,21 +1,52 @@
-from sys import maxsize
+# 2
+# 3 3 5 4
+# 3 1 1 2
+# 8
+# 0 1
+# 2
+# 1 1 1
+# 2
+# 0 1
+# 2
+# 1 2 4
+# 2
+
+import sys
+from collections import deque
 
 
-def maxSubArraySum(a, size,x):
-    max_so_far = -maxsize - 1
-    max_ending_here = 0
+n = int (sys.stdin.readline ().strip())
+queue=deque([])
 
-    for i in range (0, size):
-        max_ending_here = max_ending_here + a[i]
-        if (max_so_far < max_ending_here):
-            max_so_far = max_ending_here
+for i in range(0, n, +1):
+    x = (list (map (int, sys.stdin.readline ().strip ().split (' '))))
+    queue.append(x[1:])
 
-        if max_ending_here > x:
-            max_ending_here = 0
-    return max_so_far
+    print('queue=',queue)
+
+q = int (sys.stdin.readline ().strip())
+
+for j in range(0, q, +1):
+    str=(list (map (int, sys.stdin.readline ().strip ().split (' '))))
+
+    # logic
+    if(str[0]==0):
+        index=str[1]-1
+        popped=queue[index].pop()
+        print(popped, ' this popped')
+
+    if (str[0] == 1):
+        index = str[1]-1
+        queue[index].append(str[2])
+        print(str[2],' added to queue')
+        print('queue=', queue)
+
+    if (str[0] == 2):
+        pass
+
+print ('final queue=', queue)
 
 
-# Driver function to check the above function
-a = [1,2,3,4]
-x=8
-print("Maximum contiguous sum is", maxSubArraySum (a, len (a),k))
+
+
+
