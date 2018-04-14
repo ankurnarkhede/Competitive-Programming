@@ -1,5 +1,3 @@
-
-
 import sys
 
 def damage(ip_str):
@@ -38,21 +36,5 @@ for i in range(0,n,+1):
 
     if d>=damage(ip_str):
         print('Case #{}: {}'.format(i+1, attempts))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
