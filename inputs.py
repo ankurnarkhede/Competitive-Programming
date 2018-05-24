@@ -43,3 +43,14 @@ for i in ans:
 
     def most_common(lst):
         return max (set (lst), key=lst.count)
+
+
+
+
+
+def main():
+    function (input_args)
+
+
+if __name__ == "__main__":
+    main ()

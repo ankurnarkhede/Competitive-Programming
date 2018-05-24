@@ -1,42 +1,72 @@
-# 6 5
-# 1 2 2 3 4 5
-
-# 5 6 4 1 2
-
-
 from sys import stdin
-from collections import deque
+line_index = -1
+lines = stdin.readlines ()
 
-n, x = (map (int, stdin.readline ().strip ().split (' ')))
-a = (list (map (int, stdin.readline ().strip ().split (' '))))
+def get_line():
+    global lines, line_index
+    line_index += 1
+    return lines[line_index]
 
-# a_indexed=np.array(deque())
-# a_dequeued=np.array(deque())
-a_indexed = deque ()
+def binary_search(arr, val):
+    low = 0
+    high = len (arr) - 1
+    while low < high:
+        mid = (low + high) // 2
+        if arr[mid] > val:
+            high = mid
+    else:
+        low = mid + 1
+    if arr[low] > val:
+        return arr[low]
+    return -1
 
-for i, j in enumerate (a):
-    # a_indexed=np.append(a_indexed,[j,i+1])
-    a_indexed.append ([j, i + 1])
-print ('a_indexed={}'.format (a_indexed))
+def generate_smallest(arr):
+    stack = [arr[0]]
+    for i in range (1, len (arr)):
+        val = arr[i]
+        if val < stack[-1]:
+            stack.append (val)
+        else:
+            stack.append (stack[-1])
+    return stack
 
-for i in range (0, x, +1):
-    a_dequeued = deque ()
-    print ('============{}==========='.format (i))
-    print ('initial a_indexed={}'.format (a_indexed))
-    print ('initial a_dequeued={}'.format (a_dequeued))
+def get_ans(army, stack):
+    if not stack:
+        return "NO"
+    elem = stack[-1]
+    for i in range (1, len (army)):
+    elem = binary_search (army[i], elem)
+    if elem == -1:
+    return "NO"
+    return "YES"
 
-    for j in range (0, min (x, len (a_indexed))):
-        a_dequeued.append (a_indexed.popleft ())
+def main():
+    n = int (get_line ())
+    army = []
+    for _ in range (n):
+    row = [int (x) for x in get_line ().split ()[1:]]
+    army.append (row)
+    q = int (get_line ())
+    stack = generate_smallest (army[0])
+    for _ in range (q):
+    query = [int (x) for x in get_line ().split ()]
+    if query[0] == 1:
+    row, val = query[1:]
+    row -= 1
+    army[row].append (val)
+    if row == 0:
+    if val < stack[-1]:
+    stack.append (val)
+    else:
+    stack.append (stack[-1])
+    elif query[0] == 0:
+    row = query[1]
+    row -= 1
+    army[row].pop ()
+    if row == 0:
+    stack.pop ()
+    else:
+    print (get_ans (army, stack))
 
-    print ('a_dequeued=', a_dequeued)
-    max_this_time = max (a_dequeued, key=lambda x: x[0])
-    print ('max this time={}'.format (max_this_time))
-    max_index = max_this_time[1]
 
-    print ('Index={}'.format (max_index))
-
-    del (a_dequeued[a_dequeued.index(max_this_time)])
-
-    for k in range (0, len (a_dequeued), +1):
-        a_dequeued[k][0] = max(a_dequeued[k][0] - 1, 0)
-        a_indexed.append (a_dequeued[k])
+main ()

@@ -13,21 +13,21 @@
 
 
 import sys
-from collections import deque
 
 
 n = int (sys.stdin.readline ().strip())
-queue=deque([])
+queue=[]
 
 for i in range(0, n, +1):
     x = (list (map (int, sys.stdin.readline ().strip ().split (' '))))
     queue.append(x[1:])
 
-    print('queue=',queue)
+print('queue=',queue)
 
 q = int (sys.stdin.readline ().strip())
 
 for j in range(0, q, +1):
+    print('==========={}============'.format(j))
     str=(list (map (int, sys.stdin.readline ().strip ().split (' '))))
 
     # logic
@@ -43,7 +43,10 @@ for j in range(0, q, +1):
         print('queue=', queue)
 
     if (str[0] == 2):
+        print('yet to write logic')
         pass
+
+
 
 print ('final queue=', queue)
 
