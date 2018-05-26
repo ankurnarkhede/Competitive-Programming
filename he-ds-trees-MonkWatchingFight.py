@@ -1,7 +1,7 @@
 
 import sys
 
-
+sys.setrecursionlimit(9999999)
 
 class Node:
     def __init__(self, val):
@@ -23,7 +23,7 @@ class Tree:
             self._add (val, self.root)
 
     def _add(self, val, node):
-        if (val < node.v):
+        if (val <= node.v):
             if (node.l != None):
                 self._add (val, node.l)
             else:
