@@ -1,9 +1,9 @@
 m, n = map (int, input ().strip ().split (","))
-temp=input()
+# temp=input()
 a = []
 for i in range (m):
     a.append (list (map (int, input ().strip ().split (","))))
-    temp=input()
+    # temp=input()
 high = [0] * m
 for i in range (m):
     high[i] = a[i][-1]
