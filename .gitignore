@@ -108,7 +108,11 @@ venv.bak/
 
 #custom
 
-.temp.py
-.temp1.py
+
 temp.py
-temp1.pt
+temp1.py
+temp.cpp
+temp1.cpp
+temp.txt
+temp1.txt
+output.txt
