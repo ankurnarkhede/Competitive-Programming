@@ -1,19 +1,46 @@
-import sys
+# Write your code here
+
+N = int (input ())
+
+A = [int (x) for x in input ().strip ().split (' ')]
 
 
-def main():
-    cases = int (sys.stdin.readline ())
-    for case in range (cases):
-        n, k, v = [int (a) for a in sys.stdin.readline ().split ()]
-        l = []
-        for _ in range (n):
-            l.append (sys.stdin.readline ().strip ())
-        ns = range (k * (v - 1), k * v)
-        ns = [i % n for i in ns]
-        ns = sorted (ns)
-        ans = [l[i] for i in ns]
-        ans = ' '.join (ans)
-        print ('Case #{}: {}'.format (case + 1, ans))
+def inOrder(root, path):
+    if root >= len (A):
+        return
+    inOrder (2 * root + 1, path)
+    path.append (A[root])
+    inOrder (2 * root + 2, path)
 
 
-main ()
+path = []
+inOrder (0, path)
+
+A.sort ()
+
+M = {}
+for i in range (len (A)):
+    M[A[i]] = i
+
+print(M)
+print(path)
+check = {}
+
+
+def cycleSize(index):
+    size = 1
+    i = M[path[index]]
+    check[i] = 1
+    while i != index:
+        i = M[path[i]]
+        check[i] = 1
+        size += 1
+    return size
+
+
+total = 0
+for i in range (len (path)):
+    if i not in check:
+        total += cycleSize (i) - 1
+        print(check)
+print (total)
