@@ -1,46 +1,80 @@
-# Write your code here
 
-N = int (input ())
+# 3
+#
+# 0N,1W
+#
+# 0N,179E
+#
+# 90N,0E
 
-A = [int (x) for x in input ().strip ().split (' ')]
+import sys
+import math
 
-
-def inOrder(root, path):
-    if root >= len (A):
-        return
-    inOrder (2 * root + 1, path)
-    path.append (A[root])
-    inOrder (2 * root + 2, path)
-
-
-path = []
-inOrder (0, path)
-
-A.sort ()
-
-M = {}
-for i in range (len (A)):
-    M[A[i]] = i
-
-print(M)
-print(path)
-check = {}
+latitude=[]
+longitude=[]
 
 
-def cycleSize(index):
-    size = 1
-    i = M[path[index]]
-    check[i] = 1
-    while i != index:
-        i = M[path[i]]
-        check[i] = 1
-        size += 1
-    return size
+def find_float_ratio(angle):
+
+    return ( angle/360 )
+
+def find_angle_subtended_at_centre(lati,longi,i):
+
+    latitude_2=math.radians(lati[i])
+    latitude_1=math.radians(lati[i-1])
+
+    longitude_2=math.radians(longi[i])
+    longitude_1=math.radians(longi[i-1])
 
 
-total = 0
-for i in range (len (path)):
-    if i not in check:
-        total += cycleSize (i) - 1
-        print(check)
-print (total)
+
+    first_term=math.pow(math.sin( (latitude_2-latitude_1)/2 ),2)
+    second_term=math.cos(latitude_1)*math.cos(latitude_2)*math.pow(math.sin( (longitude_2-longitude_1)/2 ),2)
+
+    central_angle=2*math.asin(math.sqrt( first_term+second_term ))
+
+    return math.degrees(central_angle)
+
+
+def main():
+    distance=0
+    radius=6400
+    n = int (sys.stdin.readline ().strip())
+    for i in range(0,n,+1):
+        lati, longi = (map (str, sys.stdin.readline ().strip ().split (',')))
+
+        # stripping and adjusting signs
+        if(lati[-1]=='S'):
+            lati=-int(lati[:-1])
+        else:
+            lati = int (lati[:-1])
+
+        if(longi[-1]=='W'):
+            longi=-int(longi[:-1])
+        else:
+            longi=int(longi[:-1])
+
+        latitude.append(lati)
+        longitude.append(longi)
+
+        # print('latitude= {} ; longitude= {} '.format(latitude,longitude))
+
+        if(i==0):
+            continue
+
+        angle=find_angle_subtended_at_centre(latitude,longitude,i)
+
+        ratio=find_float_ratio(angle)
+
+        # print("angle= {}; Ratio= {}".format(angle,ratio))
+
+        distance_this_travel=ratio*2*math.pi*radius
+        distance+=distance_this_travel
+
+        # print('Distances=',distance_this_travel,distance)
+    print(round(distance))
+
+
+
+if __name__ == "__main__":
+    main ()
