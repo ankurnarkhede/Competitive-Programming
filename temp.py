@@ -1,80 +1,28 @@
-
-# 3
-#
-# 0N,1W
-#
-# 0N,179E
-#
-# 90N,0E
+# 1
+# 5 10
+# 8 5 4 3 2
 
 import sys
-import math
 
-latitude=[]
-longitude=[]
+t= int (sys.stdin.readline ())
 
+for i in range(t):
+    n, x = (map (int, sys.stdin.readline ().strip ().split (' ')))
+    a = (list (map (int, sys.stdin.readline ().strip ().split (' '))))
 
-def find_float_ratio(angle):
+    a=sorted(a)
+    capacity=int(x)
+    count=0
 
-    return ( angle/360 )
+    for j in range(0,n,+1):
+        if(a[j]>capacity):
+            break
 
-def find_angle_subtended_at_centre(lati,longi,i):
+        if(a[j]<capacity):
+            capacity-=a[j]
+            count+=1
 
-    latitude_2=math.radians(lati[i])
-    latitude_1=math.radians(lati[i-1])
-
-    longitude_2=math.radians(longi[i])
-    longitude_1=math.radians(longi[i-1])
-
-
-
-    first_term=math.pow(math.sin( (latitude_2-latitude_1)/2 ),2)
-    second_term=math.cos(latitude_1)*math.cos(latitude_2)*math.pow(math.sin( (longitude_2-longitude_1)/2 ),2)
-
-    central_angle=2*math.asin(math.sqrt( first_term+second_term ))
-
-    return math.degrees(central_angle)
+    print('Count={}'.format(count))
+    print(count)
 
 
-def main():
-    distance=0
-    radius=6400
-    n = int (sys.stdin.readline ().strip())
-    for i in range(0,n,+1):
-        lati, longi = (map (str, sys.stdin.readline ().strip ().split (',')))
-
-        # stripping and adjusting signs
-        if(lati[-1]=='S'):
-            lati=-int(lati[:-1])
-        else:
-            lati = int (lati[:-1])
-
-        if(longi[-1]=='W'):
-            longi=-int(longi[:-1])
-        else:
-            longi=int(longi[:-1])
-
-        latitude.append(lati)
-        longitude.append(longi)
-
-        # print('latitude= {} ; longitude= {} '.format(latitude,longitude))
-
-        if(i==0):
-            continue
-
-        angle=find_angle_subtended_at_centre(latitude,longitude,i)
-
-        ratio=find_float_ratio(angle)
-
-        # print("angle= {}; Ratio= {}".format(angle,ratio))
-
-        distance_this_travel=ratio*2*math.pi*radius
-        distance+=distance_this_travel
-
-        # print('Distances=',distance_this_travel,distance)
-    print(round(distance))
-
-
-
-if __name__ == "__main__":
-    main ()
