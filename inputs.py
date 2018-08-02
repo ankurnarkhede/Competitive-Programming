@@ -46,10 +46,15 @@ for i in ans:
 
 
 
-
+import sys
+import math
 
 def main():
-    function (input_args)
+    n = int (sys.stdin.readline ())
+
+    a = (list (map (int, sys.stdin.readline ().strip ().split (' '))))
+
+    n, k = (map (int, sys.stdin.readline ().strip ().split (' ')))
 
 
 if __name__ == "__main__":

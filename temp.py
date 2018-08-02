@@ -1,28 +1,30 @@
-# 1
-# 5 10
-# 8 5 4 3 2
+
+# Little Monk and his toy-story
+# https://www.hackerearth.com/practice/algorithms/greedy/basics-of-greedy-algorithms/practice-problems/algorithm/little-monk-and-his-toy-story/
+
+# 4
+# 40 100 20 30
+
 
 import sys
+import math
 
-t= int (sys.stdin.readline ())
+n= int (sys.stdin.readline ())
 
-for i in range(t):
-    n, x = (map (int, sys.stdin.readline ().strip ().split (' ')))
-    a = (list (map (int, sys.stdin.readline ().strip ().split (' '))))
+w = (list (map (int, sys.stdin.readline ().strip ().split (' '))))
 
-    a=sorted(a)
-    capacity=int(x)
-    count=0
+w.sort()
 
-    for j in range(0,n,+1):
-        if(a[j]>capacity):
-            break
+total=0
+count=0
+i=0
+while(i<=len(w) and total<=n):
+    i+=(1)
+    total+=i
+    if(total<=n):
+        count+=1
+    # print("i={}, sum={}".format(i,total))
 
-        if(a[j]<capacity):
-            capacity-=a[j]
-            count+=1
+max_height=int(count)
 
-    print('Count={}'.format(count))
-    print(count)
-
-
+print(max_height)
