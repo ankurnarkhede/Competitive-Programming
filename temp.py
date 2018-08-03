@@ -1,30 +1,24 @@
 
-# Little Monk and his toy-story
-# https://www.hackerearth.com/practice/algorithms/greedy/basics-of-greedy-algorithms/practice-problems/algorithm/little-monk-and-his-toy-story/
+# Even Sum
+# https://www.hackerearth.com/problem/algorithma/even-sum/
 
-# 4
-# 40 100 20 30
+# 3
+# 2 2 2
 
 
 import sys
 import math
 
-n= int (sys.stdin.readline ())
+def main():
+    n = int (sys.stdin.readline ())
+    a = (list (map (int, sys.stdin.readline ().strip ().split (' '))))
 
-w = (list (map (int, sys.stdin.readline ().strip ().split (' '))))
+    for i in range(0,n,+1):
+        for j in range(0,n,+1):
+            pass
 
-w.sort()
 
-total=0
-count=0
-i=0
-while(i<=len(w) and total<=n):
-    i+=(1)
-    total+=i
-    if(total<=n):
-        count+=1
-    # print("i={}, sum={}".format(i,total))
 
-max_height=int(count)
 
-print(max_height)
+if __name__ == "__main__":
+    main ()

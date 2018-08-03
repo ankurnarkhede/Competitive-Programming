@@ -1,30 +1,21 @@
-
-import sys
-import math
-
-
-r=6400
-
-p1=0
-q1=-1
-
-p2=0
-q2=179
-
-x1=r*math.cos(math.radians(p1))*math.cos(math.radians(q1))
-
-y1=r*math.cos(math.radians(p1))*math.sin(math.radians(q1))
-
-z1=r*math.sin(p1)
-
-x2=r*math.cos(math.radians(p2))*math.cos(math.radians(q2))
-
-y2=r*math.cos(math.radians(p2))*math.sin(math.radians(q2))
-
-z2=r*math.sin(p2)
-
-dist=math.sqrt(math.pow(x2-x1,2)+math.pow(y2-y1,2)+math.pow(z2-z1,2))
-
-print(dist)
-
-
+mod = int(1e9)+7
+n = int(input())
+arr = [0]+list(map(int,input().split()))
+print(arr)
+cnt = [1,0]
+dp = [0]*(n+1)
+print(dp)
+sm=ans=0
+for i in range(1,n+1):
+    sm += arr[i]
+    sm %= 2
+    dp[i] += cnt[sm]+dp[i-1]
+    cnt[sm] += 1
+cnt = [1,0]; sm=0
+for i in range(n,0,-1):
+    sm += arr[i]
+    sm %= 2
+    ans += dp[i-1]*cnt[sm]
+    ans %= mod
+    cnt[sm] += 1
+print(ans)
