@@ -50,7 +50,7 @@ import sys
 import math
 
 def main():
-    n = int (sys.stdin.readline ())
+    n = int (sys.stdin.readline ().strip())
 
     a = (list (map (int, sys.stdin.readline ().strip ().split (' '))))
 
