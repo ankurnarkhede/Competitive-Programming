@@ -1,35 +1,59 @@
-#include<bits/stdc++.h>
+
+#include<iostream>
+#include<stack>
+#include<climits>
+#define longg long long
 using namespace std;
 
-int main() {
-	int t;
-	cin >> t;
-	cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	for (auto i = 1; i <= t; i++) {
-		cout << "Case #" << i << ": ";
-		string wrd;
-		getline(cin, wrd);
-		int len = wrd.length();
-		vector<int> head;
-		head.reserve(len);
-		head.push_back(0);
-		for (int j = 1; j < len; j++) {
-			if (wrd[0] == wrd[j]) head.push_back(j);
+longg sub(longg *arr, longg n)
+{
+	stack<longg> s;
+	longg min = INT_MAX;
+	s.push(-1);
+	for(longg i=n-1; i>=0; i--)
+	{
+		if(arr[i]<min)
+		{
+			s.push(i);
+			min = arr[i];
 		}
-		int hlen = head.size();
-		if (1 == hlen || len == hlen) {
-				cout << "Impossible" << endl;
-		} else {
-			bool possi = false;
-			int j = hlen - 1, hjlen;
-			while (!possi && 0 < j) {
-                                hjlen = len - head[j];
-				for (int k = 1; !possi && k < hjlen; k++) possi = wrd[head[j]+k] != wrd[k];
-				j--;
+	}
+	longg maxcnt = 0;
+	longg j = s.top();
+	s.pop();
+	for(longg i=0; i<n; i++)
+	{
+		while( j!=-1 && (arr[i]>arr[j] || j<=i) )
+		{
+			if(j-i+1 >maxcnt)
+			{
+				maxcnt = j-i+1;
 			}
-			if (possi) 	cout << wrd.substr(0,head[j+1])+ wrd << endl;
-			else cout << "Impossible" << endl;
+			j = s.top();
+			s.pop();
 		}
+		if(j == -1)
+		{
+			return maxcnt;
+		}
+	}
+}
+
+
+int main()
+{
+	longg t;
+	cin>>t;
+	while(t--)
+	{
+		longg n;
+		cin>>n;
+		longg arr[n];
+		for(longg i=0; i<n; i++)
+		{
+			cin>>arr[i];
+		}
+		cout<<sub(arr, n)<<endl;
 	}
 	return 0;
 }
