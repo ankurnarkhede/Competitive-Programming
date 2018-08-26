@@ -2,12 +2,8 @@ import sys
 
 def substring(str, min_length,ans):
     for i in range (len (str)):
-        # print (str[i:])
-        # print(len (str[i:]))
         if (len (str[i:]) >= min_length):
-            # print("adding")
             ans.append (str[i:])
-            # print(ans)
         substring (str[i:i - 1], min_length,ans)
     return ans
 
