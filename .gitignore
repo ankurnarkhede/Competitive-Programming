@@ -111,6 +111,8 @@ venv.bak/
 # JetBeains IDE
 .idea/
 
+temp/
+
 temp.py
 temp1.py
 temp2.py
