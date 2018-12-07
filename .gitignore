@@ -108,7 +108,8 @@ venv.bak/
 
 #custom
 
-DataStructureAndAlgorithmicThinkingWithPython/
+# JetBeains IDE
+.idea/
 
 temp.py
 temp1.py
