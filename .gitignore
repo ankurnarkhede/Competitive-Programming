@@ -142,21 +142,10 @@ venv.bak/
 #custom
 
 # JetBeains IDE
-.idea/
+.idea/*
 
-temp/
-
-temp.py
-temp1.py
-temp2.py
-temp3.py
-temp4.py
-temp5.py
-temp6.py
-temp.cpp
-temp1.cpp
+temp/*
 temp.txt
-temp1.txt
 output.txt
 temp*
 CMakeLists.txt
