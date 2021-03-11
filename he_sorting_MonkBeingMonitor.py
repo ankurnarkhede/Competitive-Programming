@@ -5,19 +5,16 @@
 import sys
 from collections import Counter
 
-for i in range (0, int (sys.stdin.readline ()), +1):
-    n = int (sys.stdin.readline ())
-    a = (list (map (int, sys.stdin.readline ().strip ().split (' '))))
-
+for i in range(0, int(sys.stdin.readline()), +1):
+    n = int(sys.stdin.readline())
+    a = (list(map(int, sys.stdin.readline().strip().split(' '))))
 
     # logic s
 
-    c = Counter (a)
-    c = list (c.values ())
-    c.sort ()
+    c = Counter(a)
+    c = list(c.values())
+    c.sort()
 
-    print (c[-1] - c[0]) if c[-1] - c[0] > 0 else print (-1)
+    print(c[-1] - c[0]) if c[-1] - c[0] > 0 else print(-1)
 
     # logic e
-
-

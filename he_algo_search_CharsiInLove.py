@@ -1,6 +1,6 @@
 import math
 
-n = int (input ())
+n = int(input())
 b = 1
 half = n // 2
 while b <= half:
@@ -9,8 +9,8 @@ while b <= half:
         print("NO")
         break
 
-    a = (-1 + math.sqrt (1 + 4 * X)) / 2
-    if int (a) != a:
+    a = (-1 + math.sqrt(1 + 4 * X)) / 2
+    if int(a) != a:
         b += 1
         continue
 

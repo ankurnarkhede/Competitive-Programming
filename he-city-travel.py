@@ -6,25 +6,25 @@
 
 import sys
 
+
 def main():
-    dict={}
-    s,x,n= (map (int, sys.stdin.readline ().strip ().split (' ')))
+    dict = {}
+    s, x, n = (map(int, sys.stdin.readline().strip().split(' ')))
 
     for i in range(n):
-        t,y = (map (int, sys.stdin.readline ().strip ().split (' ')))
-        dict[t]=y
+        t, y = (map(int, sys.stdin.readline().strip().split(' ')))
+        dict[t] = y
 
-    day=0
-    while(s>0):
-        if(dict.get(day,0)):
-            s-=dict.get(day)
+    day = 0
+    while (s > 0):
+        if (dict.get(day, 0)):
+            s -= dict.get(day)
         else:
-            s-=x
-        day+=1
+            s -= x
+        day += 1
 
     print(day)
 
 
 if __name__ == "__main__":
-    main ()
-
+    main()

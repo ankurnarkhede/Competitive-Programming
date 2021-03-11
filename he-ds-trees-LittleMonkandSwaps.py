@@ -1,13 +1,14 @@
-
 import sys
 
-binary_inorder=[]
+binary_inorder = []
+
 
 class Node:
     def __init__(self, data):
         self.left = None
         self.right = None
         self.data = data
+
 
 class Tree:
     def __init__(self):
@@ -16,52 +17,49 @@ class Tree:
     def getRoot(self):
         return self.root
 
-
     def add_linearly(self, arr, node, index, size):
 
         if (index < size):
-            node = Node (arr[index])
+            node = Node(arr[index])
 
             # insert left child
-            node.left =  tree.add_linearly(arr, node.left, 2 * index + 1, size )
+            node.left = tree.add_linearly(arr, node.left, 2 * index + 1, size)
 
             # insert right child
-            node.right = tree.add_linearly(arr, node.right, 2 * index + 2, size )
+            node.right = tree.add_linearly(arr, node.right, 2 * index + 2, size)
 
         return node
-
 
     def get_in_order(self, node):
         # getting inorder array in var
         if (node != None):
-            self.get_in_order (node.left)
-            binary_inorder.append (node.data)
-            self.get_in_order (node.right)
+            self.get_in_order(node.left)
+            binary_inorder.append(node.data)
+            self.get_in_order(node.right)
         return binary_inorder
 
 
 # main
 
-if __name__=='__main__':
+if __name__ == '__main__':
     try:
-        n = int (input().strip())
+        n = int(input().strip())
 
     except(Exception):
-        n = int (sys.stdin.readline ().strip ())
+        n = int(sys.stdin.readline().strip())
 
-    a = (list (map (int, sys.stdin.readline ().strip ().split (' '))))
+    a = (list(map(int, sys.stdin.readline().strip().split(' '))))
 
+    tree = Tree()
 
-    tree = Tree ()
+    tree.root = tree.add_linearly(a, tree.getRoot(), 0, len(a))
 
-    tree.root=tree.add_linearly(a,tree.getRoot(),0,len(a))
-
-    binary_inorder =  tree.get_in_order(tree.getRoot())
-    A=list(binary_inorder)
-    A.sort ()
+    binary_inorder = tree.get_in_order(tree.getRoot())
+    A = list(binary_inorder)
+    A.sort()
 
     M = {}
-    for i in range (len (A)):
+    for i in range(len(A)):
         M[A[i]] = i
     check = {}
 
@@ -78,8 +76,7 @@ if __name__=='__main__':
 
 
     total = 0
-    for i in range (len (binary_inorder)):
+    for i in range(len(binary_inorder)):
         if i not in check:
-            total += cycleSize (i) - 1
-    print (total)
-
+            total += cycleSize(i) - 1
+    print(total)

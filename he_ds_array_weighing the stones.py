@@ -12,24 +12,24 @@ rupam = []
 ankit = []
 r = 0
 a = 0
-t = int (input ())
+t = int(input())
 
-for i in range (0, t, 1):
+for i in range(0, t, 1):
     r = 0
     a = 0
-    n = int (input ())
-    rupam = (list (map (int, input ().strip ().split (' '))))
+    n = int(input())
+    rupam = (list(map(int, input().strip().split(' '))))
     # print(rupam)
-    r = sum (rupam)
+    r = sum(rupam)
 
-    ankit = (list (map (int, input ().strip ().split (' '))))
-    a = sum (ankit)
+    ankit = (list(map(int, input().strip().split(' '))))
+    a = sum(ankit)
     # print(ankit)
 
     # result
     if (r > a):
-        print ('Rupam')
+        print('Rupam')
     elif (r < a):
-        print ('Ankit')
+        print('Ankit')
     else:
-        print ('Tie')
+        print('Tie')
