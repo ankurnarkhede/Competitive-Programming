@@ -27,9 +27,6 @@ def findWater(arr, n):
 
     return water
 
-
-# Driver program
-
 arr = [5,2,0,2,3,2]
 n = len(arr)
 print("Maximum water that can be accumulated is", findWater(arr, n))
